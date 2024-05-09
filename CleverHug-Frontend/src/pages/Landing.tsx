@@ -16,7 +16,6 @@ export default function Landing() {
 			setAlertDisplay({ type: "error", message: "Please enter a valid email adress", color: "red" });
 			return;
 		}
-		console.log("Sending email to CleverHug team...", email);
 		setLoading(true);
 		const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 		const response = await fetch(`${SERVER_URL}/scheduler/send-email`, {
@@ -29,8 +28,8 @@ export default function Landing() {
 			})
 		});
 		setLoading(false);
-		const data = await response.json();
 		if (response.ok) {
+			const data = await response.json();
 			setAlertDisplay({
 				type: "success",
 				message: "Thank you for signing up! You will receive an email from me shortly :)",
