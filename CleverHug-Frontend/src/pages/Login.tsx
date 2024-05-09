@@ -14,7 +14,6 @@ export default function Login() {
 			body: JSON.stringify({ username, password, remember })
 		});
 		const data = await response.json();
-		console.log(data, response.status, response.statusText);
 		if (data.error) {
 			alert(data.error);
 		} else {

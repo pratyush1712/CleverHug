@@ -1167,7 +1167,6 @@ class RecurringEvent(object):
                         vls = todatetime(toint(vls))
                 result[name] = vls
             log.debug(f'parse_rrule({r}) = {result}')
-            print(f"parse_rrule: {result}")
             return result
 
         result = ''

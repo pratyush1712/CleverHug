@@ -21,7 +21,6 @@ export const rruleToCron = async (rruleStr: string): Promise<string> => {
 		`Please convert the RRule string ${rruleStr} to CRON string. Please output the cron string in double quotes.`
 	);
 	const response = openai_response.content as string;
-	console.log(response);
 	const startIndex = response.indexOf('"');
 	const endIndex = response.lastIndexOf('"');
 	return response.slice(startIndex + 1, endIndex);
