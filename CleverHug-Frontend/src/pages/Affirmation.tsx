@@ -121,7 +121,13 @@ function Affirmation() {
 				<br />
 				Schedule ID: <span className="block sm:inline bg-green-900 text-white px-1.5 py-0.5">{success.ID}</span>
 				<button onClick={() => setSuccess({ message: "", ID: "" })} className="absolute top-0 bottom-0 right-0 px-4 py-3">
-					<svg xmlns="XXXXXXXXXXXXXXXXXXXXXXXXXX" className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg
+						xmlns="XXXXXXXXXXXXXXXXXXXXXXXXXX"
+						className="h-6 w-6 text-green-500"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>
@@ -139,7 +145,13 @@ function Affirmation() {
 				<strong className="font-bold">Error! </strong>
 				<span className="block sm:inline">{error}</span>
 				<button onClick={() => setError("")} className="absolute top-0 bottom-0 right-0 px-4 py-3">
-					<svg xmlns="XXXXXXXXXXXXXXXXXXXXXXXXXX" className="h-6 w-6 text-red-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+					<svg
+						xmlns="XXXXXXXXXXXXXXXXXXXXXXXXXX"
+						className="h-6 w-6 text-red-500"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke="currentColor"
+					>
 						<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
 					</svg>
 				</button>

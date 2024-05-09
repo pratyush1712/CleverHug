@@ -23,7 +23,11 @@ function Sidebar() {
 							${path === "/" && text === "Predefined Messages" ? "bg-sidebar-selected" : ""}
 						text-sm`}
 							>
-								<img src={`/assets/${text.split(" ")[0].toLocaleLowerCase()}.png`} alt="Home" className="inline-block w-5 h-5 mr-2" />
+								<img
+									src={`/assets/${text.split(" ")[0].toLocaleLowerCase()}.png`}
+									alt="Home"
+									className="inline-block w-5 h-5 mr-2"
+								/>
 								{text}
 							</a>
 						</li>

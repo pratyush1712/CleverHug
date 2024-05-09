@@ -50,7 +50,7 @@ function App() {
 	const mounted = useRef<boolean>(false);
 
 	const authFailRedirect = async () => {
-		if (window.location.pathname === "/login") return;
+		if (window.location.pathname === "/login" || window.location.pathname === "/") return;
 		window.location.href = "/login";
 	};
 
