@@ -8,6 +8,7 @@ on:
       - master
     paths:
       - "CleverHug-Backend/**"
+  workflow_dispatch:
 jobs:
   Deploy-Production:
     runs-on: ubuntu-latest
