@@ -1,9 +1,23 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Loading from "../components/UI/Loading";
 
 export default function Landing() {
 	const [email, setEmail] = useState<string>("");
+	const [loading, setLoading] = useState<boolean>(false);
+	const [alertDisplay, setAlertDisplay] = useState<{ type: string; message: string; color: string } | null>(null);
+
+	const validateEmail = (email: string) => {
+		const re = /\S+@\S+\.\S+/;
+		return re.test(email);
+	};
 
 	const handleSignUp = async () => {
+		if (!email || !validateEmail(email)) {
+			setAlertDisplay({ type: "error", message: "Please enter a valid email adress", color: "red" });
+			return;
+		}
+		console.log("Sending email to CleverHug team...", email);
+		setLoading(true);
 		const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 		const response = await fetch(`${SERVER_URL}/scheduler/send-email`, {
 			method: "POST",
@@ -14,12 +28,31 @@ export default function Landing() {
 				message: `Someone signed up for CleverHug! Their email is ${email}.`
 			})
 		});
-
+		setLoading(false);
 		const data = await response.json();
-		if (response.ok) alert("Successfulle sent email to CleverHug team (THAT'S ME!) I will reach out to you soon.");
-		else alert("Something went wrong. Please try again later or shoot me an email at ps2245@cornell.edu");
-		window.location.href = "/login";
+		if (response.ok) {
+			setAlertDisplay({
+				type: "success",
+				message: "Thank you for signing up! You will receive an email from me shortly :)",
+				color: "green"
+			});
+			setEmail("");
+		} else {
+			setAlertDisplay({
+				type: "error",
+				message: "Something went wrong. Please try again later or shoot me an email at ps2245@cornell.edu",
+				color: "red"
+			});
+		}
+		setLoading(false);
 	};
+
+	useEffect(() => {
+		const timeOut = setTimeout(() => {
+			setAlertDisplay(null);
+			clearTimeout(timeOut);
+		}, 5000);
+	}, [alertDisplay]);
 
 	return (
 		<div className="flex flex-col min-h-screen w-full bg-sidebar-background px-4 sm:px-6 lg:px-8 justify-start items-center">
@@ -31,6 +64,26 @@ export default function Landing() {
 					</div>
 				</div>
 			</header>
+			{alertDisplay !== null && alertDisplay.message !== "" && (
+				<div
+					className={`top-20 bg-${alertDisplay.color}-600 border border-${alertDisplay.color}-400 text-${alertDisplay.color}-700 px-4 py-3 md:w-3/4 rounded relative`}
+					role="alert"
+				>
+					<strong className="font-bold px-2">{alertDisplay.type.toUpperCase()}!</strong>
+					<span className="block sm:inline">{alertDisplay.message}</span>
+					<button onClick={() => setAlertDisplay(null)} className="absolute top-0 bottom-0 right-0 px-4 py-3">
+						<svg
+							xmlns="XXXXXXXXXXXXXXXXXXXXXXXXXX"
+							className="h-6 w-6 text-red-500"
+							fill="none"
+							viewBox="0 0 24 24"
+							stroke="currentColor"
+						>
+							<path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+						</svg>
+					</button>
+				</div>
+			)}
 			<div className="flex flex-col sm:flex-row text-white full mt-20 sm:mt-28 mx-auto sm:px-6 lg:px-8 justify-center items-start">
 				<img
 					src="/assets/landing_banner.jpg"
@@ -52,12 +105,13 @@ export default function Landing() {
 								<input
 									type="email"
 									value={email}
+									onKeyDown={e => e.key === "Enter" && handleSignUp()}
 									onChange={e => setEmail(e.target.value)}
 									placeholder="Email Address"
 									className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
 								/>
 								<button className="bg-purple-button text-white rounded-r-lg px-4 font-medium" onClick={handleSignUp}>
-									Sign Up
+									{loading ? <Loading /> : "Sign Up"}
 								</button>
 							</div>
 						</div>
