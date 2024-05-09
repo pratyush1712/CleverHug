@@ -115,7 +115,7 @@ function Affirmation() {
 			clearTimeout(closeSuccess);
 		}, 10000);
 		return (
-			<div className="bg-green-100 border border-green-400 text-green-700 md:w-3/4 px-4 py-3 rounded relative" role="alert">
+			<div className="top-20 bg-green-100 border border-green-400 text-green-700 md:w-3/4 px-4 py-3 rounded relative" role="alert">
 				<strong className="font-bold">Success! </strong>
 				<span className="block sm:inline">{success.message}</span>
 				<br />
@@ -135,7 +135,7 @@ function Affirmation() {
 			clearTimeout(closeError);
 		}, 10000);
 		return (
-			<div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 md:w-3/4 rounded relative" role="alert">
+			<div className="top-20 bg-red-100 border border-red-400 text-red-700 px-4 py-3 md:w-3/4 rounded relative" role="alert">
 				<strong className="font-bold">Error! </strong>
 				<span className="block sm:inline">{error}</span>
 				<button onClick={() => setError("")} className="absolute top-0 bottom-0 right-0 px-4 py-3">
@@ -149,7 +149,7 @@ function Affirmation() {
 
 	if (showConfirmation) {
 		return (
-			<div className="space-y-6 max-w-3xl bg-sidebar-selected p-4 rounded-lg text-white">
+			<div className="top-28 relative space-y-6 max-w-3xl min-h-full bg-sidebar-selected p-4 rounded-lg text-white">
 				<h2>Please confirm your schedule</h2>
 				<p className="">
 					<strong className="bg-gray-900">Please Confirm the Message:</strong>
@@ -200,11 +200,11 @@ function Affirmation() {
 	}
 
 	return (
-		<div className="space-y-3 md:ml-3 md:min-w-max min-h-full flex flex-row gap-28 content-evenly">
-			<form className="space-y-3 w-max min-h-full" onSubmit={handleSubmit}>
+		<div className="space-y-3 pt-20 md:ml-3 md:max-w-[50vw] md:min-w-[50vw] min-h-full flex flex-row">
+			<form className="space-y-3 w-full max-w-2/3 min-h-full" onSubmit={handleSubmit}>
 				<h1 className="text-3xl font-semibold pb-2">Create Your Daily Affirmation</h1>
 				<div className="pr-4 md:pr-0">
-					<h2 className="block text-white py-1">
+					<h2 className="block text-white py-1 pt-3.5">
 						<label htmlFor="message">What's your message?</label>
 					</h2>
 					<textarea
@@ -222,7 +222,7 @@ function Affirmation() {
 						When would you like to receive this?
 						<div className="ml-2">
 							<span
-								className="absolute bottom-4 left-60 invert"
+								className="absolute bottom-3.5 left-[37.5%] invert cursor-pointer"
 								onMouseOver={() => setShowTooltip(true)}
 								onMouseOut={() => setShowTooltip(false)}
 							>
@@ -266,7 +266,7 @@ function Affirmation() {
 				<div className="pr-4 md:pr-0">
 					<button
 						type="submit"
-						className="w-full md:min-w-2/3 rounded-lg py-2 flex justify-center mt-2 py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-button hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
+						className="w-full md:min-w-2/3 rounded-lg py-2 flex justify-center mt-6 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-purple-button hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500"
 					>
 						Schedule
 					</button>

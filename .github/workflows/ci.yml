@@ -19,20 +19,20 @@ jobs:
           fetch-depth: 0
 
       - name: Install Frontend Dependencies
-        working-directory: affirmations-frontend
+        working-directory: CleverHug-frontend
         run: pnpm install
 
       - name: Check Linter - TypeScript
         run: pnpm lint
 
       - name: Format Code - TypeScript
-        working-directory: affirmations-frontend
+        working-directory: CleverHug-frontend
         run: pnpm format-check
 
       - name: Build Frontend
-        working-directory: affirmations-frontend
+        working-directory: CleverHug-frontend
         run: pnpm build
 
       - name: Install Backend Dependencies
-        working-directory: affirmations-backend
+        working-directory: CleverHug-backend
         run: pip install -r requirements.txt

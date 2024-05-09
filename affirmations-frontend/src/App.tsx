@@ -1,13 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
-import { useRouteError } from "react-router-dom";
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import AffirmationForm from "./pages/Affirmation";
-import Login from "./pages/Login";
-import Home from "./pages/Home";
-import AuthContext from "./contexts/AuthProvider";
-import { authenticatedUser } from "./utils/auth";
-import { User } from "./types/user";
+import { useEffect, useRef, useState } from "react";
+import { RouterProvider, createBrowserRouter, useRouteError } from "react-router-dom";
+import Layout from "./components/Layout";
 import Loading from "./components/UI/Loading";
+import AuthContext from "./contexts/AuthProvider";
+import AffirmationForm from "./pages/Affirmation";
+import Landing from "./pages/Landing";
+import Login from "./pages/Login";
+import { User } from "./types/user";
+import { authenticatedUser } from "./utils/auth";
 
 type Error = {
 	data: string;
@@ -25,17 +25,14 @@ function ErrorBoundary() {
 
 const router = createBrowserRouter([
 	{
-		id: "root",
 		path: "/",
+		Component: Landing
+	},
+	{
 		errorElement: <ErrorBoundary />,
-		element: (
-			<Home>
-				<AffirmationForm />
-			</Home>
-		),
+		element: <Layout />,
 		children: [
 			{
-				index: true,
 				path: "affirmations",
 				Component: AffirmationForm
 			}

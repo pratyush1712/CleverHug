@@ -1,8 +1,8 @@
-# Daily Affirmations Email Sceduler
+# CleverHug Email Sceduler
 
 ## Description
 
-This is a simple python script that sends daily affirmations to a specified email address at a specified time. The affirmations are stored in a text file and are sent in the body of the email. It uses `rrule` format to schedule the emails and `UpStash/QStash` to schedule the emails.
+This is a simple python script that sends CleverHug to a specified email address at a specified time. The affirmations are stored in a text file and are sent in the body of the email. It uses `rrule` format to schedule the emails and `UpStash/QStash` to schedule the emails.
 
 ## Architecture
 
@@ -86,5 +86,5 @@ The backend should now be running on `http://localhost:3001`
 - Processed Time
   ![Processed Time](./images/processed_time.png)
 
-- Affirmations Scheduled
+- CleverHug Scheduled
   ![Affirmations Scheduled](./images/scheduled.png)

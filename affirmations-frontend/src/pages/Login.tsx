@@ -30,13 +30,13 @@ export default function Login() {
 				<div className="container mx-auto flex justify-between items-center">
 					<div className="flex items-center space-x-3 text-white">
 						<img src="/assets/app-logo.png" alt="Logo" className="w-6 h-6 inline-block" />
-						<h1>Daily Affirmations</h1>
+						<h1>CleverHug</h1>
 					</div>
 				</div>
 			</header>
 			<div className="bg-sidebar mb-0 pt-12 px-12 pb-4 mx-2 md:mx-0 md:p-12 rounded-lg shadow-2xl mt-4 md:mt-0 md:w-1/2 text-white">
-				<h1 className="text-xl md:text-3xl font-bold mb-4">Daily Affirmations</h1>
-				<p>Daily Affirmations is a positive affirmation username scheduler. Sign in to access your account.</p>
+				<h1 className="text-xl md:text-3xl font-bold mb-4">CleverHug</h1>
+				<p>CleverHug is a positive affirmation username scheduler. Sign in to access your account.</p>
 			</div>
 			<div className="bg-sidebar-selected p-4 md:p-8 md:mt-4 md:mr-8 rounded-lg shadow-2xl md:w-1/3 text-white text-sm">
 				<p className="text-lg mb-4">Sign in to access your account.</p>
@@ -75,7 +75,7 @@ export default function Login() {
 						Sign in
 					</button>
 					<div className="mt-4 text-center">
-						<a href="#" className="text-purple-300 hover:underline">
+						<a href="/" className="text-purple-300 hover:underline">
 							Forgot your password?
 						</a>
 					</div>

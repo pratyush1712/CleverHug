@@ -12,7 +12,7 @@ function AppBar() {
 			<div className="container mx-auto flex justify-between items-center">
 				<div className="flex items-center space-x-3">
 					<img src="/assets/app-logo.png" alt="Logo" className="w-6 h-6 inline-block" />
-					<h1>Daily Affirmations</h1>
+					<h1>CleverHug</h1>
 				</div>
 
 				<div className="hidden md:flex items-center">
