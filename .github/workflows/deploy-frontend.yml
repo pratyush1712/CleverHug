@@ -1,4 +1,4 @@
-name: Vercel Production Deployment
+name: CleverHug Frontend Vercel Production Deployment
 env:
   VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
   VERCEL_PROJECT_ID: ${{ secrets.VERCEL_FRONTEND_PROJECT_ID }}
@@ -26,10 +26,14 @@ jobs:
           version: 7
           run_install: false
       - name: Install Vercel CLI
+        working-directory: ./CleverHug-Frontend
         run: pnpm add --global vercel@latest
       - name: Pull Vercel Environment Information
+        working-directory: ./CleverHug-Frontend
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
+        working-directory: ./CleverHug-Frontend
         run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
+        working-directory: ./CleverHug-Frontend
         run: vercel deploy --prebuilt --prod --token=${{ secrets.VERCEL_TOKEN }}
