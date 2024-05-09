@@ -25,7 +25,7 @@ function ErrorBoundary() {
 
 const router = createBrowserRouter([
 	{
-		path: "/",
+		path: "/landing",
 		Component: Landing
 	},
 	{
@@ -33,6 +33,7 @@ const router = createBrowserRouter([
 		element: <Layout />,
 		children: [
 			{
+				index: true,
 				path: "affirmations",
 				Component: AffirmationForm
 			}
