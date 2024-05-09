@@ -1,38 +1,11 @@
-<p align="center">
-  <img src="https://cdn-icons-png.flaticon.com/512/6295/6295417.png" width="100" />
-</p>
-<p align="center">
-    <h1 align="center">README-AI-STREAMLIT</h1>
-</p>
-<p align="center">
-    <em>HTTP error 401 for prompt `slogan`</em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/github/license/eli64s/readme-ai-streamlit?style=flat&color=0080ff" alt="license">
-	<img src="https://img.shields.io/github/last-commit/eli64s/readme-ai-streamlit?style=flat&logo=git&logoColor=white&color=0080ff" alt="last-commit">
-	<img src="https://img.shields.io/github/languages/top/eli64s/readme-ai-streamlit?style=flat&color=0080ff" alt="repo-top-language">
-	<img src="https://img.shields.io/github/languages/count/eli64s/readme-ai-streamlit?style=flat&color=0080ff" alt="repo-language-count">
-<p>
-<p align="center">
-		<em>Developed with the software and tools below.</em>
-</p>
-<p align="center">
-	<img src="https://img.shields.io/badge/GNU%20Bash-4EAA25.svg?style=flat&logo=GNU-Bash&logoColor=white" alt="GNU%20Bash">
-	<img src="https://img.shields.io/badge/Streamlit-FF4B4B.svg?style=flat&logo=Streamlit&logoColor=white" alt="Streamlit">
-	<img src="https://img.shields.io/badge/Poetry-60A5FA.svg?style=flat&logo=Poetry&logoColor=white" alt="Poetry">
-	<img src="https://img.shields.io/badge/Python-3776AB.svg?style=flat&logo=Python&logoColor=white" alt="Python">
-</p>
-<hr>
-
 ##  Quick Links
 
 > - [ Overview](#-overview)
-> - [ Features](#-features)
 > - [ Repository Structure](#-repository-structure)
 > - [ Modules](#-modules)
 > - [ Getting Started](#-getting-started)
 >   - [ Installation](#-installation)
->   - [ Running readme-ai-streamlit](#-running-readme-ai-streamlit)
+>   - [ Running ](#-running-)
 >   - [ Tests](#-tests)
 > - [ Project Roadmap](#-project-roadmap)
 > - [ Contributing](#-contributing)
@@ -43,66 +16,231 @@
 
 ##  Overview
 
-HTTP error 401 for prompt `overview`
-
----
-
-##  Features
-
-HTTP error 401 for prompt `features`
+This is a simple python script that sends CleverHug to a specified email address at a specified time. The affirmations are stored in a text file and are sent in the body of the email. It uses rrule format to schedule the emails and UpStash/QStash to schedule the emails.
 
 ---
 
 ##  Repository Structure
 
 ```sh
-└── readme-ai-streamlit/
-    ├── LICENSE
-    ├── Makefile
-    ├── README.md
-    ├── poetry.lock
-    ├── pyproject.toml
-    ├── scripts
-    │   └── clean.sh
-    ├── src
+└── /
+    ├── .github
+    │   ├── PULL_REQUEST_TEMPLATE.md
+    │   └── workflows
+    │       ├── ci.yml
+    │       ├── deploy-backend.yml
+    │       └── deploy-frontend.yml
+    ├── CleverHug-Backend
+    │   ├── .gitignore
     │   ├── __init__.py
     │   ├── app.py
-    │   ├── cli.py
-    │   └── utils.py
-    └── tests
-        ├── __init__.py
-        └── conftest.py
+    │   ├── endpoints
+    │   │   ├── __init__.py
+    │   │   ├── auth.py
+    │   │   └── scheduler.py
+    │   ├── poetry.lock
+    │   ├── pyproject.toml
+    │   ├── recurrent
+    │   │   ├── .gitignore
+    │   │   ├── README.md
+    │   │   ├── __init__.py
+    │   │   ├── constants.py
+    │   │   ├── event_parser.py
+    │   │   ├── setup.py
+    │   │   └── test.py
+    │   ├── requirements.txt
+    │   └── vercel.json
+    ├── CleverHug-Frontend
+    │   ├── .gitignore
+    │   ├── .prettierignore
+    │   ├── .prettierrc
+    │   ├── .vscode
+    │   │   └── settings.json
+    │   ├── package.json
+    │   ├── pnpm-lock.yaml
+    │   ├── public
+    │   │   ├── assets
+    │   │   │   ├── app-logo.png
+    │   │   │   ├── custom.png
+    │   │   │   ├── info.png
+    │   │   │   ├── landing_banner.jpg
+    │   │   │   ├── message.png
+    │   │   │   ├── predefined.png
+    │   │   │   └── settings.png
+    │   │   ├── favicon.ico
+    │   │   ├── index.html
+    │   │   ├── logo192.png
+    │   │   ├── logo512.png
+    │   │   ├── manifest.json
+    │   │   └── robots.txt
+    │   ├── src
+    │   │   ├── App.tsx
+    │   │   ├── components
+    │   │   │   ├── Layout
+    │   │   │   │   ├── AppBar.tsx
+    │   │   │   │   ├── Footer.tsx
+    │   │   │   │   ├── Sidebar.tsx
+    │   │   │   │   └── index.tsx
+    │   │   │   └── UI
+    │   │   │       └── Loading.tsx
+    │   │   ├── contexts
+    │   │   │   └── AuthProvider.tsx
+    │   │   ├── index.css
+    │   │   ├── index.tsx
+    │   │   ├── logo.svg
+    │   │   ├── pages
+    │   │   │   ├── Affirmation.tsx
+    │   │   │   ├── Landing.tsx
+    │   │   │   └── Login.tsx
+    │   │   ├── react-app-env.d.ts
+    │   │   ├── reportWebVitals.ts
+    │   │   ├── types
+    │   │   │   └── user.ts
+    │   │   └── utils
+    │   │       ├── auth.ts
+    │   │       └── rrule.ts
+    │   ├── tailwind.config.js
+    │   └── tsconfig.json
+    ├── README-AI.md
+    ├── README.md
+    └── images
+        ├── dashboard.png
+        ├── landing.png
+        ├── login.png
+        ├── processed_time.png
+        └── scheduled.png
 ```
 
 ---
 
 ##  Modules
 
-<details closed><summary>.</summary>
+<details closed><summary>CleverHug-Backend</summary>
 
-| File                                                                                       | Summary                                    |
-| ---                                                                                        | ---                                        |
-| [poetry.lock](https://github.com/eli64s/readme-ai-streamlit/blob/master/poetry.lock)       | HTTP error 401 for prompt `poetry.lock`    |
-| [Makefile](https://github.com/eli64s/readme-ai-streamlit/blob/master/Makefile)             | HTTP error 401 for prompt `Makefile`       |
-| [pyproject.toml](https://github.com/eli64s/readme-ai-streamlit/blob/master/pyproject.toml) | HTTP error 401 for prompt `pyproject.toml` |
-
-</details>
-
-<details closed><summary>scripts</summary>
-
-| File                                                                                   | Summary                                      |
-| ---                                                                                    | ---                                          |
-| [clean.sh](https://github.com/eli64s/readme-ai-streamlit/blob/master/scripts/clean.sh) | HTTP error 401 for prompt `scripts/clean.sh` |
+| File                                                                                                     | Summary                                                      |
+| ---                                                                                                      | ---                                                          |
+| [poetry.lock](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/poetry.lock)       | HTTP error 401 for prompt `CleverHug-Backend/poetry.lock`    |
+| [pyproject.toml](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/pyproject.toml) | HTTP error 401 for prompt `CleverHug-Backend/pyproject.toml` |
+| [app.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/app.py)                 | HTTP error 401 for prompt `CleverHug-Backend/app.py`         |
+| [vercel.json](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/vercel.json)       | HTTP error 401 for prompt `CleverHug-Backend/vercel.json`    |
 
 </details>
 
-<details closed><summary>src</summary>
+<details closed><summary>CleverHug-Backend.endpoints</summary>
 
-| File                                                                               | Summary                                  |
-| ---                                                                                | ---                                      |
-| [utils.py](https://github.com/eli64s/readme-ai-streamlit/blob/master/src/utils.py) | HTTP error 401 for prompt `src/utils.py` |
-| [cli.py](https://github.com/eli64s/readme-ai-streamlit/blob/master/src/cli.py)     | HTTP error 401 for prompt `src/cli.py`   |
-| [app.py](https://github.com/eli64s/readme-ai-streamlit/blob/master/src/app.py)     | HTTP error 401 for prompt `src/app.py`   |
+| File                                                                                                           | Summary                                                              |
+| ---                                                                                                            | ---                                                                  |
+| [scheduler.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/endpoints/scheduler.py) | HTTP error 401 for prompt `CleverHug-Backend/endpoints/scheduler.py` |
+| [auth.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/endpoints/auth.py)           | HTTP error 401 for prompt `CleverHug-Backend/endpoints/auth.py`      |
+
+</details>
+
+<details closed><summary>CleverHug-Backend.recurrent</summary>
+
+| File                                                                                                                 | Summary                                                                 |
+| ---                                                                                                                  | ---                                                                     |
+| [setup.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/recurrent/setup.py)               | HTTP error 401 for prompt `CleverHug-Backend/recurrent/setup.py`        |
+| [event_parser.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/recurrent/event_parser.py) | HTTP error 401 for prompt `CleverHug-Backend/recurrent/event_parser.py` |
+| [constants.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/recurrent/constants.py)       | HTTP error 401 for prompt `CleverHug-Backend/recurrent/constants.py`    |
+| [test.py](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Backend/recurrent/test.py)                 | HTTP error 401 for prompt `CleverHug-Backend/recurrent/test.py`         |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend</summary>
+
+| File                                                                                                              | Summary                                                           |
+| ---                                                                                                               | ---                                                               |
+| [.prettierignore](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/.prettierignore)       | HTTP error 401 for prompt `CleverHug-Frontend/.prettierignore`    |
+| [tsconfig.json](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/tsconfig.json)           | HTTP error 401 for prompt `CleverHug-Frontend/tsconfig.json`      |
+| [package.json](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/package.json)             | HTTP error 401 for prompt `CleverHug-Frontend/package.json`       |
+| [tailwind.config.js](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/tailwind.config.js) | HTTP error 401 for prompt `CleverHug-Frontend/tailwind.config.js` |
+| [pnpm-lock.yaml](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/pnpm-lock.yaml)         | HTTP error 401 for prompt `CleverHug-Frontend/pnpm-lock.yaml`     |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.public</summary>
+
+| File                                                                                                           | Summary                                                             |
+| ---                                                                                                            | ---                                                                 |
+| [index.html](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/public/index.html)       | HTTP error 401 for prompt `CleverHug-Frontend/public/index.html`    |
+| [manifest.json](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/public/manifest.json) | HTTP error 401 for prompt `CleverHug-Frontend/public/manifest.json` |
+| [robots.txt](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/public/robots.txt)       | HTTP error 401 for prompt `CleverHug-Frontend/public/robots.txt`    |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src</summary>
+
+| File                                                                                                                  | Summary                                                               |
+| ---                                                                                                                   | ---                                                                   |
+| [react-app-env.d.ts](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/react-app-env.d.ts) | HTTP error 401 for prompt `CleverHug-Frontend/src/react-app-env.d.ts` |
+| [index.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/index.tsx)                   | HTTP error 401 for prompt `CleverHug-Frontend/src/index.tsx`          |
+| [App.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/App.tsx)                       | HTTP error 401 for prompt `CleverHug-Frontend/src/App.tsx`            |
+| [index.css](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/index.css)                   | HTTP error 401 for prompt `CleverHug-Frontend/src/index.css`          |
+| [reportWebVitals.ts](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/reportWebVitals.ts) | HTTP error 401 for prompt `CleverHug-Frontend/src/reportWebVitals.ts` |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.types</summary>
+
+| File                                                                                                  | Summary                                                          |
+| ---                                                                                                   | ---                                                              |
+| [user.ts](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/types/user.ts) | HTTP error 401 for prompt `CleverHug-Frontend/src/types/user.ts` |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.utils</summary>
+
+| File                                                                                                    | Summary                                                           |
+| ---                                                                                                     | ---                                                               |
+| [rrule.ts](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/utils/rrule.ts) | HTTP error 401 for prompt `CleverHug-Frontend/src/utils/rrule.ts` |
+| [auth.ts](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/utils/auth.ts)   | HTTP error 401 for prompt `CleverHug-Frontend/src/utils/auth.ts`  |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.pages</summary>
+
+| File                                                                                                                  | Summary                                                                  |
+| ---                                                                                                                   | ---                                                                      |
+| [Landing.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/pages/Landing.tsx)         | HTTP error 401 for prompt `CleverHug-Frontend/src/pages/Landing.tsx`     |
+| [Affirmation.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/pages/Affirmation.tsx) | HTTP error 401 for prompt `CleverHug-Frontend/src/pages/Affirmation.tsx` |
+| [Login.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/pages/Login.tsx)             | HTTP error 401 for prompt `CleverHug-Frontend/src/pages/Login.tsx`       |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.components.Layout</summary>
+
+| File                                                                                                                      | Summary                                                                          |
+| ---                                                                                                                       | ---                                                                              |
+| [Footer.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/components/Layout/Footer.tsx)   | HTTP error 401 for prompt `CleverHug-Frontend/src/components/Layout/Footer.tsx`  |
+| [index.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/components/Layout/index.tsx)     | HTTP error 401 for prompt `CleverHug-Frontend/src/components/Layout/index.tsx`   |
+| [AppBar.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/components/Layout/AppBar.tsx)   | HTTP error 401 for prompt `CleverHug-Frontend/src/components/Layout/AppBar.tsx`  |
+| [Sidebar.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/components/Layout/Sidebar.tsx) | HTTP error 401 for prompt `CleverHug-Frontend/src/components/Layout/Sidebar.tsx` |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.components.UI</summary>
+
+| File                                                                                                                  | Summary                                                                      |
+| ---                                                                                                                   | ---                                                                          |
+| [Loading.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/components/UI/Loading.tsx) | HTTP error 401 for prompt `CleverHug-Frontend/src/components/UI/Loading.tsx` |
+
+</details>
+
+<details closed><summary>CleverHug-Frontend.src.contexts</summary>
+
+| File                                                                                                                       | Summary                                                                      |
+| ---                                                                                                                        | ---                                                                          |
+| [AuthProvider.tsx](https://github.com/pratyush1712/cleverHug/blob/master/CleverHug-Frontend/src/contexts/AuthProvider.tsx) | HTTP error 401 for prompt `CleverHug-Frontend/src/contexts/AuthProvider.tsx` |
+
+</details>
+
+<details closed><summary>.github.workflows</summary>
+
+| File                                                                                                               | Summary                                                           |
+| ---                                                                                                                | ---                                                               |
+| [deploy-frontend.yml](https://github.com/pratyush1712/cleverHug/blob/master/.github/workflows/deploy-frontend.yml) | HTTP error 401 for prompt `.github/workflows/deploy-frontend.yml` |
+| [ci.yml](https://github.com/pratyush1712/cleverHug/blob/master/.github/workflows/ci.yml)                           | HTTP error 401 for prompt `.github/workflows/ci.yml`              |
+| [deploy-backend.yml](https://github.com/pratyush1712/cleverHug/blob/master/.github/workflows/deploy-backend.yml)   | HTTP error 401 for prompt `.github/workflows/deploy-backend.yml`  |
 
 </details>
 
@@ -110,65 +248,76 @@ HTTP error 401 for prompt `features`
 
 ##  Getting Started
 
-***Requirements***
+## ➤ Installation
 
-Ensure you have the following dependencies installed on your system:
+1. Clone the repository
 
-* **Python**: `version x.y.z`
+   ```bash
+   git clone
+   ```
 
-###  Installation
+### Frontend
 
-1. Clone the readme-ai-streamlit repository:
+1. Navigate to the `frontend` directory
 
-```sh
-git clone https://github.com/eli64s/readme-ai-streamlit
-```
+   ```bash
+   cd frontend
+   ```
 
-2. Change to the project directory:
+2. Set the environment variables
 
-```sh
-cd readme-ai-streamlit
-```
+   ```bash
+   cp .env.local
+   ```
 
-3. Install the dependencies:
+3. Install the dependencies
 
-```sh
-pip install -r requirements.txt
-```
+   ```bash
+    pnpm install
+   ```
 
-###  Running readme-ai-streamlit
+4. Start the development server
+   ```bash
+   pnpm start
+   ```
 
-Use the following command to run readme-ai-streamlit:
+The frontend should now be running on `http://localhost:3000`
 
-```sh
-python main.py
-```
+### Backend
 
-###  Tests
+1. Navigate to the `backend` directory
 
-To execute tests, run:
+   ```bash
+   cd backend
 
-```sh
-pytest
-```
+   ```
 
----
+2. Set the environment variables
 
-##  Project Roadmap
+   ```bash
+   cp .env
+   ```
 
-- [X] `► INSERT-TASK-1`
-- [ ] `► INSERT-TASK-2`
-- [ ] `► ...`
+3. Install the dependencies
 
----
+   ```bash
+    pip install -r requirements.txt
+   ```
+
+4. Start the development server
+   ```bash
+    python server.py
+   ```
+
+The backend should now be running on `http://localhost:3001`
 
 ##  Contributing
 
 Contributions are welcome! Here are several ways you can contribute:
 
-- **[Submit Pull Requests](https://github.com/eli64s/readme-ai-streamlit/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
-- **[Join the Discussions](https://github.com/eli64s/readme-ai-streamlit/discussions)**: Share your insights, provide feedback, or ask questions.
-- **[Report Issues](https://github.com/eli64s/readme-ai-streamlit/issues)**: Submit bugs found or log feature requests for Readme-ai-streamlit.
+- **[Submit Pull Requests](https://github.com/pratyush1712/cleverHug/blob/main/CONTRIBUTING.md)**: Review open PRs, and submit your own PRs.
+- **[Join the Discussions](https://github.com/pratyush1712/cleverHug/discussions)**: Share your insights, provide feedback, or ask questions.
+- **[Report Issues](https://github.com/pratyush1712/cleverHug/issues)**: Submit bugs found or log feature requests for .
 
 <details closed>
     <summary>Contributing Guidelines</summary>
@@ -176,7 +325,7 @@ Contributions are welcome! Here are several ways you can contribute:
 1. **Fork the Repository**: Start by forking the project repository to your GitHub account.
 2. **Clone Locally**: Clone the forked repository to your local machine using a Git client.
    ```sh
-   git clone https://github.com/eli64s/readme-ai-streamlit
+   git clone https://github.com/pratyush1712/cleverHug/
    ```
 3. **Create a New Branch**: Always work on a new branch, giving it a descriptive name.
    ```sh
@@ -196,19 +345,3 @@ Contributions are welcome! Here are several ways you can contribute:
 Once your PR is reviewed and approved, it will be merged into the main branch.
 
 </details>
-
----
-
-##  License
-
-This project is protected under the [SELECT-A-LICENSE](https://choosealicense.com/licenses) License. For more details, refer to the [LICENSE](https://choosealicense.com/licenses/) file.
-
----
-
-##  Acknowledgments
-
-- List any resources, contributors, inspiration, etc. here.
-
-[**Return**](#-quick-links)
-
----
