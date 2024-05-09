@@ -1,15 +1,14 @@
 <!-- ⚠️ This README has been generated from the file(s) "blueprint.md" ⚠️-->
+
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#cleverhug-email-sceduler)
 
 # ➤ CleverHug Email Sceduler
-
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#description)
 
 ## ➤ Description
 
 This is a simple python script that sends CleverHug to a specified email address at a specified time. The affirmations are stored in a text file and are sent in the body of the email. It uses `rrule` format to schedule the emails and `UpStash/QStash` to schedule the emails.
-
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#architecture)
 
@@ -23,7 +22,6 @@ The frontend is built using `React.js` `Typescript` and `pnpm` and is hosted on 
 
 The backend is built using `Flask` and is hosted on `Vercel` as well.
 The backend uses a variation of the `recurrent` library to parse the `rrule` format from the user's input and schedule the emails accordingly.
-
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#installation)
 
@@ -90,16 +88,22 @@ The frontend should now be running on `http://localhost:3000`
 
 The backend should now be running on `http://localhost:3001`
 
-
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/colored.png)](#screenshots)
 
 ## ➤ Screenshots
 
-- Home Page
-  ![Home Page](./images/home.png)
+### Landing Page & Login Page
 
-- Processed Time
-  ![Processed Time](./images/processed_time.png)
+| ![Landing Page](./images/landing.png) | ![Login Page](./images/login.png) |
+| :-----------------------------------: | :-------------------------------: |
+|           **Landing Page**            |          **Login Page**           |
 
-- CleverHug Scheduled
-  ![Affirmations Scheduled](./images/scheduled.png)
+### Dashboard & Processed Time
+
+| ![Dashboard Page](./images/dashboard.png) | ![Processed Time](./images/processed_time.png) |
+| :---------------------------------------: | :--------------------------------------------: |
+|            **Dashboard Time**             |               **Processed Time**               |
+
+### CleverHug Scheduled
+
+![Affirmations Scheduled](./images/scheduled.png)

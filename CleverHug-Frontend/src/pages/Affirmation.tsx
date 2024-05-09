@@ -68,7 +68,7 @@ function Affirmation() {
 	};
 
 	const rruleToText = (data: any) => {
-		const rrule = data.result;
+		const rrule = data.params;
 		const type = data.type;
 		const freqMap: any = {
 			yearly: "Yearly",

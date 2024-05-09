@@ -125,7 +125,6 @@ def process_schedule_response(response):
 
 
 @scheduler.route("/send-email", methods=["POST"])
-@login_required
 def send_email():
     """
     Sends an email to a specified recipient.
@@ -136,6 +135,7 @@ def send_email():
 
     @return: A JSON response with a message indicating whether the email was sent successfully.
     """
+    #@login_required
     data = request.json
     try:
         email_sent = send_email_func(data["subject"], data["message"], data["to_email"])
