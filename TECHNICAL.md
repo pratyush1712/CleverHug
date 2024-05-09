@@ -248,7 +248,7 @@ This is a simple python script that sends CleverHug to a specified email address
 
 ##  Getting Started
 
-## ➤ Installation
+### Installation
 
 1. Clone the repository
 
