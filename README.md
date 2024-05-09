@@ -13,6 +13,7 @@ This is a simple python script that sends CleverHug to a specified email address
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#architecture)
 
 ## ➤ Architecture
+Checkout [`TECHNNICAL.md`](./TECHNNICAL.md) for an indepth understanding of the architecutre and the modules used.
 
 ### Frontend
 
