@@ -108,16 +108,16 @@ The backend should now be running on `http://localhost:3001`
 
 ### Landing Page & Login Page
 
-| ![Landing Page](./images/landing.png) | ![Login Page](./images/login.png) |
-| :-----------------------------------: | :-------------------------------: |
-|           **Landing Page**            |          **Login Page**           |
+| ![Landing Page](./screenshots/landing.png) | ![Login Page](./screenshots/login.png) |
+| :----------------------------------------: | :------------------------------------: |
+|              **Landing Page**              |             **Login Page**             |
 
 ### Dashboard & Processed Time
 
-| ![Dashboard Page](./images/dashboard.png) | ![Processed Time](./images/processed_time.png) |
-| :---------------------------------------: | :--------------------------------------------: |
-|            **Dashboard Time**             |               **Processed Time**               |
+| ![Dashboard Page](./screenshots/dashboard.png) | ![Processed Time](./screenshots/processed_time.png) |
+| :--------------------------------------------: | :-------------------------------------------------: |
+|               **Dashboard Time**               |                 **Processed Time**                  |
 
 ### CleverHug Scheduled
 
-![Affirmations Scheduled](./images/scheduled.png)
+![Affirmations Scheduled](./screenshots/scheduled.png)
