@@ -18,9 +18,7 @@ CleverHug is an email scheduler that allows users to schedule emails to be sent 
 2. **Recurring Emails**: Users can schedule emails to be sent to themselves at a recurring time.
 3. **View Scheduled Emails**: Users can view the emails that have been scheduled.
 4. **View Processed Time**: Users can view the time at which the emails were processed.
-5. **Responsive and Easy to use Interface**: Users can easily set schedules in one illine in
-
-[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#technologies)
+5. **Responsive and Easy to use Interface**: Users can easily set schedules with just one line of input.
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#architecture)
 
