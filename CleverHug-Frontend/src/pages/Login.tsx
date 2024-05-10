@@ -33,11 +33,11 @@ export default function Login() {
 					</div>
 				</div>
 			</header>
-			<div className="bg-sidebar mb-0 pt-12 px-12 pb-4 mx-2 md:mx-0 md:p-12 rounded-lg shadow-2xl mt-4 md:mt-0 md:w-1/2 text-white">
+			<div className="bg-sidebar mb-0 pt-12 px-12 pb-4 mx-2 md:mx-0 md:p-12 rounded-lg md:shadow-sm md:shadow-purple-button mt-4 md:mt-0 md:w-1/2 text-white">
 				<h1 className="text-xl md:text-3xl font-bold mb-4">CleverHug</h1>
-				<p>CleverHug is a positive affirmation username scheduler. Sign in to access your account.</p>
+				<p>CleverHug is a platform that helps you schedule reminders or affirmations for yourself in one line inputs.</p>
 			</div>
-			<div className="bg-sidebar-selected p-4 md:p-8 md:mt-4 md:mr-8 rounded-lg shadow-2xl md:w-1/3 text-white text-sm">
+			<div className="bg-sidebar-selected p-8 md:mt-4 md:mr-8 rounded-lg shadow-lg md:w-1/3 text-white text-sm">
 				<p className="text-lg mb-4">Sign in to access your account.</p>
 				<form onSubmit={handleLogin}>
 					<div className="mb-4">

@@ -83,14 +83,14 @@ export default function Landing() {
 					</button>
 				</div>
 			)}
-			<div className="flex flex-col sm:flex-row text-white full mt-20 sm:mt-28 mx-auto sm:px-6 lg:px-8 justify-center items-start">
+			<div className="flex flex-col sm:flex-row text-white full mt-16 sm:mt-24 mx-auto sm:px-6 lg:px-8 justify-center items-center">
 				<img
 					src="/assets/landing_banner.jpg"
 					alt="Mindful Mail Logo"
-					className="w-full max-w-sm sm:max-w-md lg:max-w-lg mx-0 sm:mx-10 mb-8 rounded-lg border-4 border-[#2c2a2e]"
+					className="w-full max-w-sm sm:max-w-md lg:max-w-lg mx-0 sm:ml-10 mb-4 mt-4 rounded-lg border border-purple-button"
 				/>
 				<div className="flex-1 max-w-4xl">
-					<div className="rounded-lg shadow-lg p-4 sm:p-6 lg:p-8">
+					<div className="rounded-lg p-4 sm:px-6 lg:px-8">
 						<div className="flex flex-col text-left align-left">
 							<h1 className="font-manrope font-bold text-3xl sm:text-4xl lg:text-5xl mb-6">
 								Empower Your Day with Scheduled Messages
@@ -100,30 +100,28 @@ export default function Landing() {
 								self. It’s a tool designed to keep you motivated and organized, making it easier for you to manage your time
 								and maintain a positive mindset.
 							</p>
-							<div className="flex flex-col min-w-[100%] max-w-md">
-								<div className="flex min-w-[100%] max-w-md">
-									<input
-										type="email"
-										value={email}
-										onKeyDown={e => e.key === "Enter" && handleSignUp()}
-										onChange={e => setEmail(e.target.value)}
-										placeholder="Email Address"
-										className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
-									/>
-									<button
-										className="bg-purple-button hover:bg-purple-600 text-white rounded-r-md mr-2 px-4 font-medium"
-										onClick={handleSignUp}
-									>
-										{loading ? <Loading /> : "Sign Up"}
-									</button>
-									<button
-										className="hover:bg-purple-button bg-purple-600 text-white rounded-md px-4 font-medium"
-										onClick={() => (window.location.href = "/login")}
-									>
-										{loading ? <Loading /> : "Check it out"}
-									</button>
-								</div>
+							<div className="flex min-w-[100%] max-w-md">
+								<input
+									type="email"
+									value={email}
+									onKeyDown={e => e.key === "Enter" && handleSignUp()}
+									onChange={e => setEmail(e.target.value)}
+									placeholder="Email Address"
+									className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
+								/>
+								<button
+									className="bg-purple-button hover:bg-purple-600 text-white rounded-r-md px-4 text-sm md:text-lg"
+									onClick={handleSignUp}
+								>
+									{loading ? <Loading /> : "Sign Up"}
+								</button>
 							</div>
+							<button
+								className="hover:bg-purple-button bg-purple-600 text-white rounded-md px-4 my-4 p-2 font-medium"
+								onClick={() => (window.location.href = "/login")}
+							>
+								{loading ? <Loading /> : "Check out the app"}
+							</button>
 						</div>
 					</div>
 				</div>

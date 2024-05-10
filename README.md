@@ -8,11 +8,24 @@
 
 ## ➤ Description
 
-This is a simple python script that sends CleverHug to a specified email address at a specified time. The affirmations are stored in a text file and are sent in the body of the email. It uses `rrule` format to schedule the emails and `UpStash/QStash` to schedule the emails.
+CleverHug is an email scheduler that allows users to schedule emails to be sent to themselves at a later time. The emails can be scheduled to be sent at a specific time or at a recurring time. The user can also view the emails that have been scheduled and the time at which they were processed.
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#features)
+
+## ➤ Features
+
+1. **Schedule Emails**: Users can schedule emails to be sent to themselves at a later time.
+2. **Recurring Emails**: Users can schedule emails to be sent to themselves at a recurring time.
+3. **View Scheduled Emails**: Users can view the emails that have been scheduled.
+4. **View Processed Time**: Users can view the time at which the emails were processed.
+5. **Responsive and Easy to use Interface**: Users can easily set schedules in one illine in
+
+[![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#technologies)
 
 [![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/aqua.png)](#architecture)
 
 ## ➤ Architecture
+
 Checkout [`TECHNNICAL.md`](./TECHNICAL.md) for an indepth understanding of the architecutre and the modules used.
 
 ### Frontend
