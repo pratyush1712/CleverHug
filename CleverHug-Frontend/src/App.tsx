@@ -29,12 +29,12 @@ const router = createBrowserRouter([
 		Component: Landing
 	},
 	{
+		path: "/",
 		errorElement: <ErrorBoundary />,
 		element: <Layout />,
 		children: [
 			{
 				index: true,
-				path: "affirmations",
 				Component: AffirmationForm
 			}
 		]
@@ -51,8 +51,8 @@ function App() {
 	const mounted = useRef<boolean>(false);
 
 	const authFailRedirect = async () => {
-		if (window.location.pathname === "/login" || window.location.pathname === "/") return;
-		window.location.href = "/login";
+		if (window.location.pathname === "/login" || window.location.pathname === "/landing") return;
+		window.location.href = "/landing";
 	};
 
 	useEffect(() => {

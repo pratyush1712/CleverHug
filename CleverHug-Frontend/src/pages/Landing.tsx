@@ -100,18 +100,29 @@ export default function Landing() {
 								self. It’s a tool designed to keep you motivated and organized, making it easier for you to manage your time
 								and maintain a positive mindset.
 							</p>
-							<div className="flex min-w-[100%] max-w-md">
-								<input
-									type="email"
-									value={email}
-									onKeyDown={e => e.key === "Enter" && handleSignUp()}
-									onChange={e => setEmail(e.target.value)}
-									placeholder="Email Address"
-									className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
-								/>
-								<button className="bg-purple-button text-white rounded-r-lg px-4 font-medium" onClick={handleSignUp}>
-									{loading ? <Loading /> : "Sign Up"}
-								</button>
+							<div className="flex flex-col min-w-[100%] max-w-md">
+								<div className="flex min-w-[100%] max-w-md">
+									<input
+										type="email"
+										value={email}
+										onKeyDown={e => e.key === "Enter" && handleSignUp()}
+										onChange={e => setEmail(e.target.value)}
+										placeholder="Email Address"
+										className="flex-1 p-2 border text-black border-gray-300 rounded-l-lg focus:outline-none"
+									/>
+									<button
+										className="bg-purple-button hover:bg-purple-600 text-white rounded-r-md mr-2 px-4 font-medium"
+										onClick={handleSignUp}
+									>
+										{loading ? <Loading /> : "Sign Up"}
+									</button>
+									<button
+										className="hover:bg-purple-button bg-purple-600 text-white rounded-md px-4 font-medium"
+										onClick={() => (window.location.href = "/login")}
+									>
+										{loading ? <Loading /> : "Check it out"}
+									</button>
+								</div>
 							</div>
 						</div>
 					</div>

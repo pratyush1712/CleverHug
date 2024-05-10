@@ -19,7 +19,7 @@ export default function Login() {
 		} else {
 			localStorage.removeItem("token");
 			localStorage.setItem("token", data.token);
-			window.location.href = "/affirmations";
+			window.location.href = "/";
 		}
 	};
 
