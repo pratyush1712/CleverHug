@@ -40,7 +40,7 @@ function Affirmation() {
 
 	const handleConfirm = async () => {
 		const emailData = {
-			subject: "Affirmation Schedule",
+			subject: "PRATYUSH, YOU GOT THIS!",
 			message,
 			schedule_time: processedTime.result,
 			cron: "55 * * * *", //cron !== "" ? cron : "50 8 * * 3",
