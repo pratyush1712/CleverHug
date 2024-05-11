@@ -18,11 +18,6 @@ scheduler = Blueprint("scheduler", __name__)
 @scheduler.route("/process-time", methods=["POST"])
 @login_required
 def process_time():
-    """
-    Parses a time string to determine if it represents a recurring or single event and returns the rrule and parameters.
-
-    @return: A JSON response with the rrule, parameters, and event type.
-    """
     time_string = request.json.get("time")
     if not time_string:
         return jsonify({"error": "No time string provided"}), 400
@@ -44,12 +39,6 @@ def process_time():
 
 
 def process_datetime_params(params, keys):
-    """
-    Processes and formats datetime parameters in the event parameters.
-
-    @param params: The event parameters.
-    @param keys: The keys of the datetime parameters to process.
-    """
     for key in keys:
         if key in params:
             try:
@@ -62,11 +51,6 @@ def process_datetime_params(params, keys):
 @scheduler.route("/schedule", methods=["POST"])
 @login_required
 def schedule_time():
-    """
-    Schedules an email to be sent at a specified time based on the provided cron expression.
-
-    @return: A JSON response with a message indicating whether the email was scheduled successfully.
-    """
     data = request.json
     schedule_type = data.get("type")
     cron = data.get("cron")
@@ -75,7 +59,7 @@ def schedule_time():
     to_email = "ps2245@cornell.edu"
 
     headers = generate_auth_headers(cron)
-    destination = f"{os.environ.get('HOSTED_URL')}/send-email/"
+    destination = f"{os.environ.get('HOSTED_URL')}/scheduler/send-email/"
     body = {"subject": subject, "message": message, "to_email": to_email, "cron": cron}
     qstash_url = "https://qstash.upstash.io/v2/schedules/"
 
@@ -84,38 +68,15 @@ def schedule_time():
 
 
 def generate_auth_headers(cron):
-    """
-    Generates headers for the scheduling API request.
-
-    @param cron: The cron expression for the scheduled email.
-
-    @return: A dictionary containing the headers for the request.
-    """
     token = os.getenv("QSTASH_TOKEN")
     return {"Authorization": f"Bearer {token}", "Upstash-Cron": cron}
 
 
 def post_schedule_request(url, headers, body):
-    """
-    Sends a POST request to the scheduling API.
-
-    @param url: The URL of the QStash scheduling API and the destination URL for the scheduled email endpoint.
-    @param headers: The headers for the request.
-    @param body: The body of the request.
-
-    @return: The response object from the request.
-    """
     return requests.post(url, headers=headers, json=body)
 
 
 def process_schedule_response(response):
-    """
-    Processes the response from the scheduling API.
-
-    @param response: The response object from the scheduling API.
-
-    @return: A JSON response with a message indicating whether the email was scheduled successfully.
-    """
     if response.status_code in {200, 201}:
         data = response.json()
         message = "Email scheduled successfully!"
@@ -126,15 +87,6 @@ def process_schedule_response(response):
 
 @scheduler.route("/send-email", methods=["POST"])
 def send_email():
-    """
-    Sends an email to a specified recipient.
-
-    @param subject: The subject of the email.
-    @param message: The message body of the email.
-    @param to_email: The recipient's email address.
-
-    @return: A JSON response with a message indicating whether the email was sent successfully.
-    """
     #@login_required
     data = request.json
     try:
