@@ -59,7 +59,7 @@ def schedule_time():
     to_email = "ps2245@cornell.edu"
 
     headers = generate_auth_headers(cron)
-    destination = f"{os.environ.get('HOSTED_URL')}/scheduler/send-email/"
+    destination = f"{os.environ.get('HOSTED_URL')}/scheduler/send-email"
     body = {"subject": subject, "message": message, "to_email": to_email, "cron": cron}
     qstash_url = "https://qstash.upstash.io/v2/schedules/"
 
