@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { rruleToCron } from "../utils/rrule";
+import { rruleToCron, textToCron, cronToText } from "../utils/rrule";
 import Loading from "../components/UI/Loading";
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
@@ -18,21 +18,25 @@ function Affirmation() {
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
 		setLoading(true);
-		const response = await fetch(`${SERVER_URL}/scheduler/process-time`, {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-				Authorization: `Bearer ${localStorage.getItem("token")}`
-			},
-			body: JSON.stringify({ time })
-		});
-		const data = await response.json();
-		if (!response.ok) {
-			setError(data.error);
-			setLoading(false);
-			return;
-		}
-		rruleToCron(data.rrule).then(cron => setCron(cron));
+		// const response = await fetch(`${SERVER_URL}/scheduler/process-time`, {
+		// 	method: "POST",
+		// 	headers: {
+		// 		"Content-Type": "application/json",
+		// 		Authorization: `Bearer ${localStorage.getItem("token")}`
+		// 	},
+		// 	body: JSON.stringify({ time })
+		// });
+		// const data = await response.json();
+		// if (!response.ok) {
+		// 	setError(data.error);
+		// 	setLoading(false);
+		// 	return;
+		// }
+		const cron = await textToCron(time);
+		const text = await cronToText(cron);
+		const data = { result: text, type: "recurring" };
+		// const cronResp = await rruleToCron(data.result);
+		setCron(cron);
 		setProcessedTime(data);
 		setLoading(false);
 		setShowConfirmation(true);
@@ -189,7 +193,7 @@ function Affirmation() {
 						</div>
 					</strong>
 					<br />
-					{rruleToText(processedTime)}
+					{processedTime && processedTime.result}
 				</p>
 				<p>
 					<strong className="bg-gray-900">Please Confirm the CRON:</strong>
