@@ -34,7 +34,7 @@ function Sidebar() {
 					))}
 				</ul>
 				<button
-					className="bg-sidebar-selected absolute text-white min-w-full py-2 absolute bottom-[35.1%] rounded-md text-sm hover:bg-[#302d34]"
+					className="bg-sidebar-selected absolute text-white min-w-full py-2 absolute bottom-[32.1%] rounded-md text-sm hover:bg-[#302d34]"
 					onClick={() => {
 						localStorage.removeItem("token");
 						window.location.reload();

@@ -52,7 +52,6 @@ def process_datetime_params(params, keys):
 @login_required
 def schedule_time():
     data = request.json
-    schedule_type = data.get("type")
     cron = data.get("cron")
     subject = data.get("subject")
     message = data.get("message")
@@ -87,7 +86,7 @@ def process_schedule_response(response):
 
 @scheduler.route("/send-email", methods=["POST"])
 def send_email():
-    #@login_required
+    # @login_required
     data = request.json
     try:
         email_sent = send_email_func(data["subject"], data["message"], data["to_email"])
@@ -124,7 +123,8 @@ def send_email_func(subject, body, to_email):
             smtp_server.starttls()
             smtp_server.login(sender_email, password)
             text = message.as_string()
-            smtp_server.sendmail(sender_email, to_email, text)
+            sender_email_alias = "hello@cleverhugs.life"
+            smtp_server.sendmail(sender_email_alias, to_email, text)
             return {"success": True, "message": "Email sent successfully"}
     except Exception as e:
         print(f"Error sending email: {str(e)}")

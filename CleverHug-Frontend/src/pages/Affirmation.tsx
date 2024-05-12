@@ -32,7 +32,12 @@ function Affirmation() {
 		// 	setLoading(false);
 		// 	return;
 		// }
-		const cron = await textToCron(time);
+		let pattern = /[+\n]|^\d+/g;
+		const cron = (await textToCron(time))
+			.replace(pattern, " ")
+			.replace(/[ ]{2,}/g, " ")
+			.trim();
+
 		const text = await cronToText(cron);
 		const data = { result: text, type: "recurring" };
 		// const cronResp = await rruleToCron(data.result);
@@ -59,6 +64,11 @@ function Affirmation() {
 			body: JSON.stringify(emailData)
 		});
 		const data = await response.json();
+		if (!response.ok) {
+			setError(data.error);
+			setLoading(false);
+			return;
+		}
 		setSuccess(data);
 		setMessage("");
 		setTime("");
@@ -110,8 +120,6 @@ function Affirmation() {
 			: `Once at ${untilFormat.format(new Date(rrule))}`;
 		return text;
 	};
-
-	if (loading) return <Loading />;
 
 	if (success && success.ID !== "" && success.message !== "") {
 		const closeSuccess = setTimeout(() => {
@@ -165,39 +173,45 @@ function Affirmation() {
 
 	if (showConfirmation) {
 		return (
-			<div className="top-28 relative space-y-6 max-w-3xl min-h-full bg-sidebar-selected p-4 rounded-lg text-white">
-				<h2>Please confirm your schedule</h2>
+			<div className="top-20 relative space-y-6 max-w-3xl min-h-full bg-sidebar-selected p-6 rounded-lg text-white">
+				{loading && <Loading />}
+				<h1 className="text-3xl font-semibold pb-2">Please confirm your schedule</h1>
 				<p className="">
-					<strong className="bg-gray-900">Please Confirm the Message:</strong>
-					<br /> {message}
+					<strong className="bg-sidebar-background text-md p-2 rounded">Please Confirm the Message:</strong>
+					<br />
+					<br />
+					<p className="bg-white text-black shadow-inner px-4 py-2 rounded max-h-28 overflow-y-scroll">{message}</p>
 				</p>
-				<p className="relative">
-					<strong className="bg-gray-900 relative">
+				<p className="relative text-white">
+					<strong className="bg-sidebar-background relative text-md p-2 rounded">
 						Please Confirm the Scheduled Times (processed by AI):
 						<div
-							className="absolute -right-3.5 top-0 cursor-pointer invert"
+							className="absolute right-0 top-0 cursor-pointer invert"
 							onMouseOver={() => setShowMistakeTooltip(true)}
 							onMouseOut={() => setShowMistakeTooltip(false)}
 						>
 							<img src="/assets/info.png" alt="question mark" className="w-3 h-3 color-white" />
 							{showMistakeTooltip && (
-								<div className="absolute top-full mt-2 ml-2 w-64 rounded-md bg-black shadow-lg p-3 text-sm text-gray-100">
+								<div className="absolute top-full mt-2 w-64 rounded-md bg-white shadow-lg p-3 text-sm text-gray-700">
 									<strong>Common mistakes:</strong>
 									<ul className="list-disc pl-4">
-										<li className="text-gray-400 text-sm">Check Spellings of words like 'Tomorrow'.</li>
-										<li className="text-gray-400 text-sm">Try removing 'Today' from the text.</li>
-										<li className="text-gray-400 text-sm">Inconsistent intervals (e.g., mixing days and months).</li>
+										<li className="text-gray-900 text-sm">Check Spellings of words like 'Tomorrow'.</li>
+										<li className="text-gray-900 text-sm">Try removing 'Today' from the text.</li>
+										<li className="text-gray-900 text-sm">Inconsistent intervals (e.g., mixing days and months).</li>
 									</ul>
 								</div>
 							)}
 						</div>
 					</strong>
 					<br />
-					{processedTime && processedTime.result}
+					<br />
+					<p className="bg-white text-black shadow-inner px-4 py-2 rounded">{processedTime && processedTime.result}</p>
 				</p>
 				<p>
-					<strong className="bg-gray-900">Please Confirm the CRON:</strong>
-					<br /> {cron}
+					<strong className="bg-sidebar-background relative text-md p-2 rounded">Please Confirm the CRON:</strong>
+					<br />
+					<br />
+					<p className="bg-white text-black shadow-inner px-4 py-2 rounded">{cron}</p>
 				</p>
 				<button
 					onClick={handleConfirm}
@@ -235,39 +249,40 @@ function Affirmation() {
 				</div>
 				<div className="pr-4 md:pr-0">
 					<label htmlFor="time" className="relative block text-sm font-medium text-white py-1">
-						When would you like to receive this?
-						<div className="ml-2">
-							<span
-								className="absolute bottom-3.5 left-[37.5%] invert cursor-pointer"
+						<strong className="bg-gray-900 relative">
+							When would you like to receive this?
+							<div
+								className="absolute -right-3.5 top-0 cursor-pointer invert"
 								onMouseOver={() => setShowTooltip(true)}
 								onMouseOut={() => setShowTooltip(false)}
 							>
 								<img src="/assets/info.png" alt="question mark" className="w-3 h-3 color-white" />
-							</span>
-							{showTooltip && (
-								<div className="absolute top-full mt-2 w-64 rounded-md bg-white shadow-lg p-3 text-sm text-gray-700">
-									Examples of time queries:
-									<ul className="list-disc pl-4">
-										{[
-											"Every day at 9:00 AM",
-											"Every other day at 9:00 AM",
-											"Every week at 9:00 AM",
-											"Every other week at 9:00 AM",
-											"Every month at 9:00 AM",
-											"Every other month at 9:00 AM",
-											"Every year at 9:00 AM",
-											"From 9:00 AM to 5:00 PM",
-											"On Second Tuesday of every month at 9:00 AM",
-											"Every 30 minutes From 9:00 AM to 5:00 PM on Second Tuesday of every month for 2 years"
-										].map(example => (
-											<li key={example} className="text-gray-900 text-sm">
-												{example}
-											</li>
-										))}
-									</ul>
-								</div>
-							)}
-						</div>
+								{showTooltip && (
+									<div className="absolute top-full mt-2 w-64 rounded-md bg-white shadow-lg p-3 text-sm text-gray-700">
+										Examples of time queries:
+										<ul className="list-disc pl-4">
+											{[
+												"Every day at 9:00 AM",
+												"Every other day at 9:00 AM",
+												"Every week at 9:00 AM",
+												"Every other week at 9:00 AM",
+												"Every month at 9:00 AM",
+												"Every other month at 9:00 AM",
+												"Every year at 9:00 AM",
+												"From 9:00 AM to 5:00 PM",
+												"On Second Tuesday of every month at 9:00 AM",
+												"Every 30 minutes From 9:00 AM to 5:00 PM on Second Tuesday of every month for 2 years"
+											].map(example => (
+												<li key={example} className="text-gray-900 text-sm">
+													{example}
+												</li>
+											))}
+										</ul>
+									</div>
+								)}
+							</div>
+						</strong>
+						<br />
 					</label>
 					<input
 						type="text"

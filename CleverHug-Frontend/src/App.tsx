@@ -75,11 +75,12 @@ function App() {
 		};
 	}, []);
 
-	if (loading) return <Loading />;
+	// if (loading) return <Loading />;
 
 	return (
 		<div className="app min-h-screen bg-main-background">
 			<AuthContext.Provider value={{ user, setUser, loading }}>
+				{loading ? <Loading /> : null}
 				<RouterProvider router={router} />
 			</AuthContext.Provider>
 		</div>
