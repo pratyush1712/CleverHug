@@ -47,7 +47,7 @@ function Affirmation() {
 			subject: "PRATYUSH, YOU GOT THIS!",
 			message,
 			schedule_time: processedTime.result,
-			cron: "55 * * * *", //cron !== "" ? cron : "50 8 * * 3",
+			cron: cron,
 			type: processedTime.type
 		};
 		const response = await fetch(`${SERVER_URL}/scheduler/schedule`, {
