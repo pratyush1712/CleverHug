@@ -123,7 +123,7 @@ def send_email_func(subject, body, to_email):
             smtp_server.starttls()
             smtp_server.login(sender_email, password)
             text = message.as_string()
-            sender_email_alias = "hello@cleverhugs.life"
+            sender_email_alias = "Pratyush Sudhakar <hello@cleverhugs.life>"
             smtp_server.sendmail(sender_email_alias, to_email, text)
             return {"success": True, "message": "Email sent successfully"}
     except Exception as e:
