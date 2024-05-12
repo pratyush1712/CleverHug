@@ -39,7 +39,7 @@ export default function Landing() {
 		} else {
 			setAlertDisplay({
 				type: "error",
-				message: "Something went wrong. Please try again later or shoot me an email at ps2245@cornell.edu",
+				message: "Something went wrong. Please try again later or shoot me an email at pratyush@cleverhugs.life",
 				color: "red"
 			});
 		}
