@@ -1,10 +1,16 @@
 import { useEffect, useState } from "react";
 import Loading from "../components/UI/Loading";
+import { pageView } from "../utils/analytics";
 
 export default function Landing() {
 	const [email, setEmail] = useState<string>("");
 	const [loading, setLoading] = useState<boolean>(false);
 	const [alertDisplay, setAlertDisplay] = useState<{ type: string; message: string; color: string } | null>(null);
+
+	useEffect(() => {
+		document.title = "CleverHugs - Landing";
+		pageView(window.location.pathname, "Landing");
+	}, []);
 
 	const validateEmail = (email: string) => {
 		const re = /\S+@\S+\.\S+/;

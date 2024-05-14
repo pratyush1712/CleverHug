@@ -1,10 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { pageView } from "../utils/analytics";
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 export default function Login() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [remember, setRemember] = useState(false);
+
+	useEffect(() => {
+		document.title = "CleverHugs - Login";
+		pageView(window.location.pathname, "Login");
+	}, []);
 
 	const handleLogin = async (event: React.FormEvent) => {
 		event.preventDefault();

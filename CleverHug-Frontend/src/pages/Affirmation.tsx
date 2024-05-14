@@ -1,6 +1,7 @@
-import { useState } from "react";
-import { rruleToCron, textToCron, cronToText } from "../utils/rrule";
+import { useEffect, useState } from "react";
+import { textToCron, cronToText } from "../utils/rrule";
 import Loading from "../components/UI/Loading";
+import { pageView } from "../utils/analytics";
 
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 function Affirmation() {
@@ -14,6 +15,11 @@ function Affirmation() {
 	const [showTooltip, setShowTooltip] = useState(false);
 	const [showMistakeTooltip, setShowMistakeTooltip] = useState(false);
 	const [cron, setCron] = useState("");
+
+	useEffect(() => {
+		document.title = "CleverHugs";
+		pageView(window.location.pathname, "Index");
+	}, []);
 
 	const handleSubmit = async (e: any) => {
 		e.preventDefault();
