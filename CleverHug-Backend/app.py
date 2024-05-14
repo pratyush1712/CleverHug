@@ -19,6 +19,7 @@ def create_app():
 
     with app.app_context():
         login_manager.init_app(app)
+
         from endpoints.auth import auth
         from endpoints.scheduler import scheduler
 
