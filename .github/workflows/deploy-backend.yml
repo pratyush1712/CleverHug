@@ -21,7 +21,7 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build Project Artifacts
         working-directory: ./CleverHug-Backend
-        run: vercel build --prod --force --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel build --prod --token=${{ secrets.VERCEL_TOKEN }}
       - name: Deploy Project Artifacts to Vercel
         working-directory: ./CleverHug-Backend
         run: vercel deploy --prebuilt --prod --force --token=${{ secrets.VERCEL_TOKEN }}
