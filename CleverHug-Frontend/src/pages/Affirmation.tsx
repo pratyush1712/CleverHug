@@ -120,9 +120,9 @@ function Affirmation() {
 		const text = recurring
 			? `Repeats ${freq} every ${interval} ${interval > 1 ? "times" : "time"} ${byweekday ? `on ${byweekday}` : ""} ${
 					byhour ? `at ${byhour} hours` : ""
-				} ${byminute ? `at ${byminute} minutes` : ""} ${bysecond ? `at ${bysecond} seconds` : ""} ${count ? `for ${count} times` : ""} ${
-					until ? `until ${untilDate}` : ""
-				}`
+			  } ${byminute ? `at ${byminute} minutes` : ""} ${bysecond ? `at ${bysecond} seconds` : ""} ${
+					count ? `for ${count} times` : ""
+			  } ${until ? `until ${untilDate}` : ""}`
 			: `Once at ${untilFormat.format(new Date(rrule))}`;
 		return text;
 	};
