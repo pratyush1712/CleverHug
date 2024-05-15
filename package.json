@@ -1,0 +1,16 @@
+{
+    "scripts": {
+        "install:client": "cd scripts && install.sh 0",
+        "install:server": "cd scripts && install.sh 1",
+        "install": "concurrently \"pnpm run install:server\" \"pnpm run install:client\"",
+        "dev:client": "cd scripts && dev.sh 0",
+        "dev:server": "cd scripts && dev.sh 1",
+        "dev": "concurrently \"pnpm run dev:server\" \"pnpm run dev:client\"",
+        "build": "cd scripts && build.sh 0",
+        "start:server": "cd scripts && start.sh 0",
+        "start:client": "cd scripts && start.sh 1",
+        "start": "concurrently \"pnpm run start:server\" \"pnpm run start:client\"",
+        "deploy:server": "cd scripts && deploy.sh 0",
+        "deploy:client": "cd scripts && deploy.sh 1"
+    }
+}
